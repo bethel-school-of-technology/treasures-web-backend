@@ -1,0 +1,36 @@
+GET http://localhost:4000
+Content-Type: application/json
+
+###
+
+GET http://localhost:4000/peter
+Content-Type: application/json
+
+###
+
+
+GET http://localhost:4000/blogs
+Content-Type: application/json
+
+###
+
+POST http://localhost:4000/blogs
+Content-Type: application/json
+
+{
+  "title":"My 6 blog",
+  "description":"This is a short 6 blog",
+  "mainBody":"Here is the main body content of the 6 blog",
+  "date":"2020-11-01"
+}
+
+###
+
+PUT http://localhost:4000/blogs
+Content-Type: application/json
+
+###
+
+GET http://localhost:4000/blogs/tom
+Content-Type: application/json
+
