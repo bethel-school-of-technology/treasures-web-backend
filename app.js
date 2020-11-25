@@ -10,6 +10,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
+var bodyParser = require('body-parser');
 
 // Define the router paths
 var indexRouter = require('./routes/index');
@@ -44,6 +46,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors()); // this will alow everyone to connect - needs to be fixed for production
+app.use(bodyParser.json());
 
 // Connect url to the router path
 app.use('/', indexRouter);
