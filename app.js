@@ -1,4 +1,4 @@
-console.log("Loaded apps.js");
+console.log("Loaded app.js");
 
 
 // Not installed or setup body-parser
