@@ -41,5 +41,5 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:4000/blogs/5fb7fb3fd084888edbf6d9df
+DELETE http://localhost:4000/blogs/5fbe3ca5d1955ff22b24624f
 Content-Type: application/json

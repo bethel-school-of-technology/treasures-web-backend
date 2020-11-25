@@ -31,7 +31,7 @@ router.get("/", async function (req, res) {
   try {
     const blogs = await Blog.find();
     res.status(200).json({
-      status: "success",
+      status: "success", 
       results: blogs.length,
       data: { blogs },
     });
@@ -71,29 +71,24 @@ router.put("/", async function (req, res, next) {
 router.delete("/:id", async function (req, res, next) {
   let id = req.params.id;
 
-  Blog.findOneAndDelete(
+  await Blog.findOneAndDelete(
     { _id: id },
     function (err) {
     if(err){ 
-      console.log(err);}
+      console.log(err);
+      res.json({ 
+        status: 401,
+        message: "Error deleting blog post",
+        err
+      })
+    }
     console.log("Successful deletion");
+    res.json({ 
+      status: 200,
+      message: "Successfully deleted "
+    })
     });
   });
-
-
-//       .then((data) => {
-//         res.json(data);
-//       })
-//       .catch((error) => {
-//         res.json(error);
-//       })
-//   );
-// });//  catch (err) {
-  //     res.status(404).json({
-  //       status: 'fail',
-  //       message: err
-  //     });
-  //   }
     
 
 
