@@ -23,10 +23,10 @@ POST http://localhost:4000/blogs
 Content-Type: application/json
 
 {
-  "title":"My 8 blog",
-  "description":"This is a short 8 blog",
-  "mainBody":"Here is the main body content of the 8 blog",
-  "date":"2020-11-02"
+  "title":"My 10 blog",
+  "description":"This is a short 10 blog",
+  "mainBody":"Here is the main body content of the 10 blog",
+  "date":"2020-11-17"
 }
 
 ###
@@ -39,3 +39,7 @@ Content-Type: application/json
 GET http://localhost:4000/blogs/tom
 Content-Type: application/json
 
+###
+
+DELETE http://localhost:4000/blogs/5fbe3ca5d1955ff22b24624f
+Content-Type: application/json
