@@ -5,8 +5,10 @@ var Blog = require("../models/Blog");
 var router = express.Router();
 
 router.post("/", async function (req, res) {
-  // Need to add checks that the properties actually contain data
-  // Add security that only approved users can add blogs
+  //
+  // ----------- Need to add checks that the properties actually contain data
+  // ----------- Add security that only approved users can add blogs
+  //
   console.log("Doing a POST to /blogs");
   const newBlog = new Blog({
     title: req.body.title,
@@ -16,17 +18,11 @@ router.post("/", async function (req, res) {
   });
   newBlog
     .save()
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((error) => {
-      res.json(error);
-    });
+    .then((data) => {res.json(data);})
+    .catch((error) => {res.json(error);});
 });
 
 router.get("/", async function (req, res) {
-  // res.render('index', { title: 'Express' });
-  // res.send('GET / in blogs working')
   console.log("Doing a GET to /blogs");
   try {
     const blogs = await Blog.find();
@@ -48,7 +44,6 @@ router.get("/:id", async function (req, res) {
   try {
     let id = req.params.id;
     const blog = await Blog.findById(id);
-
     res.status(200).json({
       status: "success",
       results: blog.length,
@@ -70,7 +65,6 @@ router.put("/", async function (req, res, next) {
 // Delete is working but has a long delay. Come back to this later.
 router.delete("/:id", async function (req, res, next) {
   let id = req.params.id;
-
   await Blog.findOneAndDelete(
     { _id: id },
     function (err) {
@@ -90,11 +84,5 @@ router.delete("/:id", async function (req, res, next) {
     });
   });
     
-
-
-
-router.get("/tom", function (req, res, next) {
-  res.send("GET /tom in blogs working");
-});
 
 module.exports = router;
