@@ -1,1 +1,0 @@
-DATABASE_ACCESS = "mongodb+srv://appUser:Shal0m@treasures.mbm8r.mongodb.net/Treasures?retryWrites=true&w=majority"
