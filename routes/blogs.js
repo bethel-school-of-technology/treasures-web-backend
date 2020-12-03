@@ -57,12 +57,29 @@ router.get("/:id", async function (req, res) {
   }
 });
 
-router.put("/", async function (req, res, next) {
-  res.send("PUT / in blogs working");
+router.put("/:id", async function (req, res, next) {
+  // 
+  try {
+    const blogs = await Blog.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+
+    res.status(200).json({
+      status: "success",
+      message: "You successfully updated blog post",
+      data: { blogs }
+    });
+  } catch (err) {
+    res.status(401).json({
+      status: 'fail',
+      message: "Error updating blog post",
+      err
+    });
+  }
 });
 
 
-// Delete is working but has a long delay. Come back to this later.
 router.delete("/:id", async function (req, res, next) {
   let id = req.params.id;
   await Blog.findOneAndDelete(
@@ -74,14 +91,15 @@ router.delete("/:id", async function (req, res, next) {
         status: 401,
         message: "Error deleting blog post",
         err
-      })
-    }
-    console.log("Successful deletion");
+      });
+    } console.log("Error deleting post");
+    
     res.json({ 
       status: 200,
-      message: "Successfully deleted "
+      message: "Successfully deleted"
     })
     });
+    console.log("Successful deletion");
   });
     
 
