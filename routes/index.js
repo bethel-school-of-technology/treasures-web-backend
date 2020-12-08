@@ -9,8 +9,4 @@ router.get('/', function(req, res, next) {
   // res.render('index', { title: 'Express' });
 });
 
-router.get('/peter', function(req, res, next) {
-  res.send('GET on /peter in index working')
-});
-
 module.exports = router;

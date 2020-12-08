@@ -23,12 +23,14 @@ var app = express();
 
 // Should this section on the database should be in the blogs routes?
 // const url = `mongodb+srv://appUser:Shal0m@treasures.mbm8r.mongodb.net/Treasures?retryWrites=true&w=majority`; // the url replaces the "process.env.DATABASE_ACCESS"
+// Connect to MongoDB on Atlas
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-// Connect to MongoDB on Atlas
 dotenv.config();
+const uri = process.env.DATABASE_ACCESS
+console.log (`uri = ${uri}`)
 const connectionParams = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true };
-mongoose.connect(process.env.DATABASE_ACCESS, connectionParams)
+mongoose.connect(uri, connectionParams)
   .then(() => {
     console.log('Connected to Treasures DB')
   })
