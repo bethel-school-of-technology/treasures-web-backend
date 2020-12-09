@@ -19,7 +19,7 @@ router.post("/", async function (req, res) {
   newBlog
     .save()
     .then((data) => {res.json(data);})
-    .catch((error) => {res.json(error);});
+    .catch((error) => {res.json(error);}); // ----- Add status message to alert if error or success
 });
 
 router.get("/", async function (req, res) {
@@ -71,7 +71,7 @@ router.put("/:id", async function (req, res, next) {
       data: { blogs }
     });
   } catch (err) {
-    res.status(401).json({
+    res.status(401).json({ // --------------------Make sure all error messages are correct
       status: 'fail',
       message: "Error updating blog post",
       err
