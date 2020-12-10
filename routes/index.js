@@ -1,4 +1,4 @@
-console.log("Loaded index.js");
+//console.log("Loaded index.js");
 var express = require('express');
 var router = express.Router();
 
