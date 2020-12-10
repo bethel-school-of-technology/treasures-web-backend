@@ -34,9 +34,9 @@ router.get("/", async function (req, res) {
   } catch (err) {
     res.status(404).json({
       status: "fail",
-      message: err,
+      message: "Could not find blog", err
     });
-  }
+  } console.log("Could not get blog");
 });
 
 router.get("/:id", async function (req, res) {
@@ -52,9 +52,10 @@ router.get("/:id", async function (req, res) {
   } catch (err) {
     res.status(404).json({
       status: "fail",
-      message: err,
+      message: "Could not find blog by id", 
+      err
     });
-  }
+  } console.log("Could not get blog by id");
 });
 
 router.put("/:id", async function (req, res, next) {
@@ -71,12 +72,12 @@ router.put("/:id", async function (req, res, next) {
       data: { blogs }
     });
   } catch (err) {
-    res.status(401).json({ // --------------------Make sure all error messages are correct
+    res.status(500).json({ // --------------------Make sure all error messages are correct
       status: 'fail',
       message: "Error updating blog post",
       err
     });
-  }
+  } console.log("Could not update post");
 });
 
 
@@ -88,7 +89,7 @@ router.delete("/:id", async function (req, res, next) {
     if(err){ 
       console.log(err);
       res.json({ 
-        status: 401,
+        status: 404,
         message: "Error deleting blog post",
         err
       });
