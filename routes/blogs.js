@@ -18,8 +18,8 @@ router.post("/", async function (req, res) {
   });
   newBlog
     .save()
-    .then((data) => {res.json(data);})
-    .catch((error) => {res.json(error);}); // ----- Add status message to alert if error or success
+    .then((data) => { res.json(data); })
+    .catch((error) => { res.json(error); }); // ----- Add status message to alert if error or success
 });
 
 router.get("/", async function (req, res) {
@@ -27,7 +27,7 @@ router.get("/", async function (req, res) {
   try {
     const blogs = await Blog.find();
     res.status(200).json({
-      status: "success", 
+      status: "success",
       results: blogs.length,
       data: { blogs },
     });
@@ -52,7 +52,7 @@ router.get("/:id", async function (req, res) {
   } catch (err) {
     res.status(404).json({
       status: "fail",
-      message: "Could not find blog by id", 
+      message: "Could not find blog by id",
       err
     });
   } console.log("Could not get blog by id");
@@ -86,22 +86,22 @@ router.delete("/:id", async function (req, res, next) {
   await Blog.findOneAndDelete(
     { _id: id },
     function (err) {
-    if(err){ 
-      console.log(err);
-      res.json({ 
-        status: 404,
-        message: "Error deleting blog post",
-        err
-      });
-    } console.log("Error deleting post");
-    
-    res.json({ 
-      status: 200,
-      message: "Successfully deleted"
-    })
+      if (err) {
+        console.log(err);
+        res.json({
+          status: 404,
+          message: "Error deleting blog post",
+          err
+        });
+      } console.log("Error deleting post");
+
+      res.json({
+        status: 200,
+        message: "Successfully deleted"
+      })
     });
-    console.log("Successful deletion");
-  });
-    
+  console.log("Successful deletion");
+});
+
 
 module.exports = router;
