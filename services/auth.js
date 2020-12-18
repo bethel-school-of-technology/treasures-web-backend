@@ -1,13 +1,12 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
-const models = require('../models/index');
 
 var authService = {
     signUser: function (user) {
         const token = jwt.sign(
             {
-                email: user.email,
-                id: user.id
+                name: user.name,
+                id: user._id
             },
             'secretkey',
             {
@@ -19,7 +18,7 @@ var authService = {
     verifyUser: function (token) {  //<--- receive JWT token as parameter
         try {
             let decoded = jwt.verify(token, 'secretkey'); //<--- Decrypt token using same key used to encrypt
-            return models.users.findByPk(decoded.id); //<--- Return result of database query as promise
+            return models.user.findById(decoded.id); //<--- This is the mongoose/sequelize changer Return result of database query as promise
         } catch (err) {
             console.log(err);
             return new Promise((resolve, reject) => { resolve(null) });

@@ -12,7 +12,7 @@ router.post("/userSignUp", async function (req, res) {
   console.log("Doing a POST to /userSignUp");
   const newUser = new User({
     name: req.body.name,
-    password: req.body.password
+    password: authService.hashPassword(req.body.password)
   });
   newUser
     .save()
@@ -20,11 +20,11 @@ router.post("/userSignUp", async function (req, res) {
     .catch((error) => { res.json(error); }); // ----- Add status message to alert if error or success
 });
 
-//router.post('/signup', function (req, res, next) {
-//models.users
+//router.post('/userSignUp', function (req, res, next) {
+//models.user
 //  .findOrCreate({
 //    where: {
-//      email: req.body.email,
+//      name: req.body.name,
 //    },
 //    defaults: {
 //      password: authService.hashPassword(req.body.password)
