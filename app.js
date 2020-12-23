@@ -20,6 +20,7 @@ var blogsRouter = require('./routes/blogs');
 
 var app = express();
 
+//const port = process.env.PORT || 4000;
 
 // Should this section on the database should be in the blogs routes?
 // const url = `mongodb+srv://appUser:Shal0m@treasures.mbm8r.mongodb.net/Treasures?retryWrites=true&w=majority`; // the url replaces the "process.env.DATABASE_ACCESS"
@@ -75,5 +76,10 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//app.listen(port, () => {
+//  console.log(`server running http://localhost:${port}`);
+//  console.log(`press CTRL+C to stop server`);
+//});
 
 module.exports = app;
