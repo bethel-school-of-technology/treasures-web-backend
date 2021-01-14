@@ -17,12 +17,12 @@ var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var blogsRouter = require('./routes/blogs');
+var contactsRouter = require('./routes/contacts');
 
 var app = express();
 
+//const port = process.env.PORT || 4000;  // this is already done in the bin/www file
 
-// Should this section on the database should be in the blogs routes?
-// const url = `mongodb+srv://appUser:Shal0m@treasures.mbm8r.mongodb.net/Treasures?retryWrites=true&w=majority`; // the url replaces the "process.env.DATABASE_ACCESS"
 // Connect to MongoDB on Atlas
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -50,8 +50,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-
 app.use(cors()); // this will alow everyone to connect - needs to be fixed for production
 app.use(bodyParser.json());
 
@@ -59,6 +57,7 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/blogs', blogsRouter);
 app.use('/users', usersRouter);
+app.use('/contacts', contactsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -75,5 +74,10 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//app.listen(port, () => {
+//  console.log(`server running http://localhost:${port}`);
+//  console.log(`press CTRL+C to stop server`);
+//});
 
 module.exports = app;
