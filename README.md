@@ -1,4 +1,4 @@
-# treasures backend
+# Treasures backend
 
 Create a new git clone on your local machine then open it up in VC
 
