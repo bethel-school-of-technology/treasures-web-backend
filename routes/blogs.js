@@ -32,7 +32,7 @@ router.get("/", async function (req, res) {
       data: { blogs },
     });
   } catch (err) {
-    res.status(404).json({
+    res.status(500).json({
       status: "fail",
       message: "Could not find blog", err
     });
@@ -50,7 +50,7 @@ router.get("/:id", async function (req, res) {
       data: { blog },
     });
   } catch (err) {
-    res.status(404).json({
+    res.status(500).json({
       status: "fail",
       message: "Could not find blog by id",
       err
@@ -89,7 +89,7 @@ router.delete("/:id", async function (req, res, next) {
       if (err) {
         console.log(err);
         res.json({
-          status: 404,
+          status: 500,
           message: "Error deleting blog post",
           err
         });

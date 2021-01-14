@@ -20,19 +20,20 @@ router.post('/api/form', (req, res) => {
         `
 
         let transporter = nodemailer.createTransport({
-            host: 'smtp.treasures.co.uk',
-            port: 487,
+            host: 'smtp.ethereal.email',
+            port: 587,
             auth: {
-                user: 'karen@treasures.org.uk',
-                pass: ''
+                user: 'marianna77@ethereal.email',
+                pass: 'QtFcCtBVPYRReJhRWS'
             }
         })
 
         let mailOptions = {
-            from: '',
-            to: 'karen.waller3@gmail.com',
-            replyTo: '',
+            from: 'test@testaccount.com',
+            to: 'peter.waller53@gmail.com',
+            replyTo: 'test@testaccount.com',
             subject: 'New Message',
+            text: req.body.message,
             html: htmlEmail
         }
 

@@ -21,10 +21,8 @@ var contactsRouter = require('./routes/contacts');
 
 var app = express();
 
-//const port = process.env.PORT || 4000;
+//const port = process.env.PORT || 4000;  // this is already done in the bin/www file
 
-// Should this section on the database should be in the blogs routes?
-// const url = `mongodb+srv://appUser:Shal0m@treasures.mbm8r.mongodb.net/Treasures?retryWrites=true&w=majority`; // the url replaces the "process.env.DATABASE_ACCESS"
 // Connect to MongoDB on Atlas
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -50,8 +48,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 
 app.use(cors()); // this will alow everyone to connect - needs to be fixed for production
